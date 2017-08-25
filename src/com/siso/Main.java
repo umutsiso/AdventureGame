@@ -9,33 +9,39 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        locations.put(0, new Location(0, "In front of PC - Sitting", new HashMap<>()));
 
-        locations.put(0, new Location(0, "In front of PC - Sitting"));
-        locations.put(1, new Location(1, "End of a road"));
-        locations.put(2, new Location(2, "on top of a hill"));
-        locations.put(3, new Location(3, "inside a building, a well house for small spring"));
-        locations.put(4, new Location(4, "in a valley beside a stream"));
-        locations.put(5, new Location(5, "In the forest"));
 
-        //Exists for Road
-        locations.get(1).addExit("N", 5);
-        locations.get(1).addExit("S", 4);
-        locations.get(1).addExit("W", 2);
-        locations.get(1).addExit("E", 3);
 
+        Map<String,Integer> tempExit = new HashMap<>();
+        tempExit.put("W", 2);
+        tempExit.put("N", 5);
+        tempExit.put("S", 4);
+        tempExit.put("E", 3);
+        locations.put(1, new Location(1, "End of a road",tempExit));
+
+
+        tempExit = new HashMap<>();
         //Exits for Hill
-        locations.get(2).addExit("N", 5);
+        tempExit.put("N", 5);
+        locations.put(2, new Location(2, "on top of a hill", tempExit));
 
+        tempExit = new HashMap<>();
         //Exits for Building
-        locations.get(3).addExit("W", 1);
+        tempExit.put("W", 1);
+        locations.put(3, new Location(3, "inside a building, a well house for small spring", tempExit));
 
+        tempExit = new HashMap<>();
         //Exits for Valley
-        locations.get(4).addExit("N", 1);
-        locations.get(4).addExit("W", 2);
+        tempExit.put("N", 1);
+        tempExit.put("W", 2);
+        locations.put(4, new Location(4, "in a valley beside a stream", tempExit));
 
+        tempExit = new HashMap<>();
         //Exists for Forest
-        locations.get(5).addExit("S", 1);
-        locations.get(5).addExit("W", 2);
+        tempExit.put("S", 1);
+        tempExit.put("W", 2);
+        locations.put(5, new Location(5, "In the forest", tempExit));
 
 
         int loc = 1;
